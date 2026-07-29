@@ -7,10 +7,10 @@
 - [x] Documentar princípios públicos
 - [x] Criar exemplos sanitizados
 - [x] Criar vitrine HTML simples
-- [ ] Publicar repositório público
+- [x] Publicar repositório público
 - [ ] Publicar GitHub Pages, se fizer sentido
 - [ ] Adicionar screenshots ou diagramas visuais
-- [ ] Criar exemplos comparativos de resposta genérica vs resposta governada
+- [x] Criar exemplos comparativos de resposta genérica vs resposta governada
 
 ## Próximas evoluções possíveis
 
