@@ -1,41 +1,45 @@
 # Padrão Visual de Repositórios — MLI-Knot / Tendoshk
 
-Este documento registra o padrão visual recomendado para repositórios do ecossistema **MLI-Knot / Tendoshk**.
+Este documento registra o padrão visual recomendado para as superfícies públicas do ecossistema **MLI-Knot / Tendoshk**.
 
 ## Banner padrão
 
-Todo novo repositório do ecossistema deve incluir, no topo do `README.md`, o banner visual compartilhado:
+Cada repositório público deve manter sua própria cópia local do banner aprovado em:
+
+```text
+assets/matrix-inspired-banner.gif
+```
+
+No `README.md`, a referência recomendada é relativa ao próprio repositório:
 
 ```md
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/proftectiagocosta-hash/mli-knot-mind-public/main/assets/matrix-inspired-banner.gif" width="100%" alt="Cyber banner" />
+<img src="assets/matrix-inspired-banner.gif" width="100%" alt="Cyber banner" />
 
 </div>
 ```
 
-## Forma alternativa simples
-
-Quando a renderização HTML ou alguma ferramenta bloquear o bloco acima, use a forma Markdown simples:
+Uma forma Markdown simples também pode ser usada:
 
 ```md
-![Cyber banner](https://raw.githubusercontent.com/proftectiagocosta-hash/mli-knot-mind-public/main/assets/matrix-inspired-banner.gif)
+![Cyber banner](assets/matrix-inspired-banner.gif)
 ```
 
-## Regra de estabilidade
+## Regra de autonomia
 
-O arquivo central do banner deve permanecer estável em:
+O banner não deve ser servido por hotlink a partir de outro repositório do ecossistema.
 
-```text
-mli-knot-mind-public/assets/matrix-inspired-banner.gif
-```
+Cada superfície pública mantém uma cópia local byte-idêntica do asset aprovado. Nenhum showcase deve funcionar como CDN, origem binária ou autoridade de disponibilidade para os demais.
 
-Outros repositórios devem referenciar esse arquivo central, em vez de duplicar o GIF em cada projeto.
+A identidade visual compartilhada depende da igualdade do asset aprovado, não de uma dependência entre repositórios.
 
 ## Escopo
 
-Este padrão é visual e documental. Ele não autoriza alteração de código, workflows, segredos, governanças privadas, checkpoints reais ou material sensível.
+Este padrão é visual e documental.
+
+Ele não autoriza alteração de código, workflows, segredos, governanças privadas, checkpoints reais, conteúdo operacional interno ou material sensível.
 
 ## Objetivo
 
-Criar unidade visual entre os repositórios do ecossistema sem quebrar a separação entre camadas públicas, privadas, sensíveis, pausadas e experimentais.
+Criar unidade visual entre as superfícies públicas do ecossistema sem quebrar sua autonomia nem a separação entre camadas públicas, privadas, sensíveis, pausadas e experimentais.
