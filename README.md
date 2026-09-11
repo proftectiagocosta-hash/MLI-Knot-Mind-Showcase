@@ -1,11 +1,11 @@
 # MLI-Knot-Mind-Showcase
 
-> **Status:** vitrine pública conceitual e sanitizada do `MLI-Knot-Mind`.
+> **Status:** vitrine pública sanitizada do `MLI-Knot-Mind`, alinhada ao estado operacional O0–O5 concluído.
 > **Núcleo fonte:** privado/local; não incluído nesta superfície pública.
-> **Função pública:** apresentar princípios de governança, processamento de contexto e qualidade de resposta para fluxos assistidos por IA.
+> **Função pública:** apresentar princípios, arquitetura sanitizada e capacidades verificadas sem expor código-fonte privado, prompts internos ou evidência operacional sensível.
 
 ![Status](https://img.shields.io/badge/status-public%20showcase-blue)
-![Scope](https://img.shields.io/badge/scope-sanitized%20conceptual%20docs-darkgreen)
+![Scope](https://img.shields.io/badge/scope-sanitized%20operational%20overview-darkgreen)
 ![Core](https://img.shields.io/badge/private%20core-not%20included-red)
 ![Language](https://img.shields.io/badge/language-PT--BR%20%7C%20EN-informational)
 
@@ -25,29 +25,63 @@
 
 ### O que é
 
-O **MLI-Knot Mind** é um processador de governança para fluxos assistidos por IA. Sua proposta é melhorar a forma como contexto, evidência, incerteza e intenção são separados antes de uma resposta ou decisão.
+O **MLI-Knot Mind** é um processador de governança para fluxos assistidos por IA. Ele organiza como contexto explícito, evidência, incerteza, invariantes e intenção são preparados antes da inferência e como um resultado candidato é validado estruturalmente antes de ser liberado.
 
-Ele **não é memória persistente**, banco de dados de estados, cofre de histórico ou executor automático. Sua função é orientar como o contexto deve ser lido, filtrado, classificado e transformado em uma saída útil, verificável e não genérica.
+O Mind **não é o modelo de IA**, não é memória persistente, não é banco de estados, não é cofre de histórico e não é executor automático. Modelo, host, exposição MCP e eventual executor são fronteiras separadas.
 
-Esta vitrine pública apresenta somente a camada conceitual e sanitizada. O núcleo operacional, prompts privados, estados internos, checkpoints reais e mecanismos completos permanecem fora do GitHub público.
+Esta vitrine apresenta somente uma projeção pública sanitizada. Código-fonte privado, prompts completos, checkpoints reais, caminhos operacionais, credenciais e mecanismos internos não são publicados aqui.
+
+### Estado operacional público
+
+A campanha operacional **O0–O5** do núcleo privado foi concluída. O que pode ser afirmado publicamente, sem expor material privado, é:
+
+- **O0 — Modelo de execução:** fronteiras entre Mind, modelo, host, MCP e execução foram separadas; ambiente é contexto operacional, não identidade do Mind.
+- **O1 — Core agnóstico de ambiente:** o core expõe `prepare_invocation`, `validate_result` e `capabilities`; é stateless e não cria memória implícita entre chamadas.
+- **O2 — Exposição MCP opcional:** um adapter separado expõe duas tools e um resource de capacidades, com structured output e `stdio` como transporte inicial; o core não depende de MCP.
+- **O3 — Host Integration:** a integração é provider-neutral e o host é restrito a inferência; observação, tool call, execução e memória persistente não são promovidas a funções do host.
+- **O4 — Validação multiambiente:** regressões determinísticas cobriram `ENV-CASA`, `ENV-ALEAM`, um `ENV-OTHER` sintético e ausência de ambiente. O caso sintético testa portabilidade e **não prova um terceiro deployment real nem equivalência universal**.
+- **O5 — Regressão e continuidade:** a regressão final consolidou **55/55** testes e a campanha O0–O5 foi encerrada por continuidade canônica.
+
+Esses resultados descrevem o escopo validado. Eles não significam produto pronto para produção, deployment universal ou validação de todo provider possível.
+
+### Fluxo público simplificado
+
+```text
+contexto explícito
+        ↓
+Mind core: prepare_invocation
+        ↓
+host/modelo: inferência somente
+        ↓
+resultado candidato
+        ↓
+Mind core: validate_result
+        ↓
+RELEASE / REVISE / HOLD
+```
+
+`validate_result` valida contrato e estrutura; não transforma automaticamente uma saída em verdade. Da mesma forma, `RELEASE` não equivale a autorização para executar uma ação externa.
+
+A exposição MCP é opcional e fica ao redor do core. O **Context Agent** também permanece uma fonte externa opcional de evidência; ele não é componente obrigatório do Mind. Tunnel não é requisito do core.
 
 ### Princípios públicos
 
 - honestidade intelectual;
-- separação entre fato, hipótese, inferência e limitação;
+- separação entre fato, hipótese, inferência, limitação e `UNKNOWN`;
 - clareza de escopo;
 - disciplina de contexto;
 - rastreabilidade mínima;
 - governança de prompts;
 - redução de alucinação;
-- distinção entre execução real e intenção declarada;
+- distinção entre evidência, decisão de ferramenta, chamada de ferramenta e execução;
 - resposta útil antes de resposta impressionante.
 
 ### O que esta vitrine contém
 
 - visão pública do framework;
+- arquitetura operacional sanitizada;
+- estado público O0–O5;
 - princípios conceituais;
-- arquitetura pública;
 - exemplos sanitizados;
 - casos de uso;
 - limites públicos;
@@ -57,10 +91,13 @@ Esta vitrine pública apresenta somente a camada conceitual e sanitizada. O núc
 
 ### O que esta vitrine não contém
 
+- código-fonte privado do core;
 - prompts privados completos;
 - checkpoints reais;
+- hashes e caminhos operacionais internos;
 - histórico bruto;
 - dados pessoais;
+- credenciais ou provider keys;
 - estados internos do ecossistema;
 - regras privadas de ativação;
 - mecanismos internos completos;
@@ -102,7 +139,7 @@ Veja também [`docs/public_templates.md`](docs/public_templates.md).
 
 ### Limite público
 
-O repositório público descreve **princípios, não o núcleo privado**. Ele não deve ser tratado como espelho, backup ou distribuição do `MLI-Knot-Mind` operacional.
+O repositório público descreve contratos, princípios e resultados sanitizados. Ele não é espelho, backup nem distribuição do `MLI-Knot-Mind` privado.
 
 ---
 
@@ -110,29 +147,63 @@ O repositório público descreve **princípios, não o núcleo privado**. Ele n�
 
 ### What it is
 
-**MLI-Knot Mind** is a governance processor for AI-assisted workflows. It is designed to improve how context, evidence, uncertainty, and intent are separated before producing an answer or decision.
+**MLI-Knot Mind** is a governance processor for AI-assisted workflows. It structures how explicit context, evidence, uncertainty, invariants and intent are prepared before inference, and how a candidate result is structurally validated before release.
 
-It is **not persistent memory**, a state database, a raw-history vault, or an automatic executor. Its role is to guide how context should be read, filtered, classified, and transformed into useful and verifiable output.
+Mind **is not the AI model**, persistent memory, a state database, a raw-history vault or an automatic executor. Model, host, MCP exposure and any external executor remain separate boundaries.
 
-This repository is only the sanitized conceptual showcase. The operational core, private prompts, internal states, real checkpoints, and complete mechanisms remain outside the public GitHub surface.
+This repository is only a sanitized public projection. Private source code, complete prompts, real checkpoints, operational paths, credentials and internal mechanisms are not published here.
+
+### Public operational status
+
+The private core's **O0–O5 operational campaign is complete**. The public-safe summary is:
+
+- **O0 — Execution model:** Mind, model, host, MCP and execution boundaries are separated; environment is operational context, not Mind identity.
+- **O1 — Environment-agnostic core:** the core exposes `prepare_invocation`, `validate_result` and `capabilities`; it is stateless and creates no implicit memory between calls.
+- **O2 — Optional MCP exposure:** a separate adapter exposes two tools and one capabilities resource, with structured output and `stdio` as the initial transport; the core does not require MCP.
+- **O3 — Host Integration:** integration is provider-neutral and the host is inference-only; observation, tool calls, execution and persistent memory are not promoted to host responsibilities.
+- **O4 — Multi-environment validation:** deterministic regressions covered `ENV-CASA`, `ENV-ALEAM`, a synthetic `ENV-OTHER`, and no declared environment. The synthetic case tests portability and **does not prove a real third deployment or universal equivalence**.
+- **O5 — Regression and continuity:** the final regression consolidated **55/55** tests and the O0–O5 campaign was closed through canonical continuity.
+
+These results describe the validated scope. They do not imply production readiness, universal deployment or validation against every possible provider.
+
+### Simplified public flow
+
+```text
+explicit context
+      ↓
+Mind core: prepare_invocation
+      ↓
+host/model: inference only
+      ↓
+candidate result
+      ↓
+Mind core: validate_result
+      ↓
+RELEASE / REVISE / HOLD
+```
+
+`validate_result` validates contract and structure; it does not automatically turn an output into truth. Likewise, `RELEASE` is not authorization to execute an external action.
+
+MCP exposure is optional and sits around the core. The **Context Agent** remains an optional external evidence source rather than a required Mind component. A tunnel is not a core requirement.
 
 ### Public principles
 
 - intellectual honesty;
-- separation between fact, hypothesis, inference, and limitation;
+- separation between fact, hypothesis, inference, limitation and `UNKNOWN`;
 - scope clarity;
 - context discipline;
 - minimal traceability;
 - prompt governance;
 - reduced hallucination;
-- distinction between real execution and declared intention;
+- separation between evidence, tool decision, tool call and execution;
 - useful answers before impressive answers.
 
 ### What this showcase contains
 
 - public framework overview;
+- sanitized operational architecture;
+- public O0–O5 status;
 - conceptual principles;
-- public architecture;
 - sanitized examples;
 - use cases;
 - public limits;
@@ -142,10 +213,13 @@ This repository is only the sanitized conceptual showcase. The operational core,
 
 ### What it does not contain
 
+- private core source code;
 - full private prompts;
 - real checkpoints;
+- private operational hashes and paths;
 - raw history;
 - personal data;
+- credentials or provider keys;
 - internal ecosystem state;
 - private activation rules;
 - complete internal mechanisms;
@@ -172,11 +246,16 @@ This repository is only the sanitized conceptual showcase. The operational core,
 ## Public status
 
 ```text
-Repository type: public conceptual showcase
+Repository type: public sanitized showcase
 Source core: private/local governance processor
+Operational campaign: O0-O5 complete
+Final deterministic regression: 55/55
+Environment required by core: no
+MCP required by core: no
+Persistent session memory: no
+Automatic execution: no
 Private core included here: no
 Sensitive material included here: no
-State: conceptual, sanitized, public documentation
 ```
 
 ## License
