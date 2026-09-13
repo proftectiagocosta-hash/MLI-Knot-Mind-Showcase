@@ -8,6 +8,9 @@
 ![Scope](https://img.shields.io/badge/scope-sanitized%20operational%20overview-darkgreen)
 ![Core](https://img.shields.io/badge/private%20core-not%20included-red)
 ![Language](https://img.shields.io/badge/language-PT--BR%20%7C%20EN-informational)
+![Closed operational campaign](https://img.shields.io/badge/closed%20operational%20campaign-100%25-brightgreen)
+![GitHub stars](https://img.shields.io/github/stars/proftectiagocosta-hash/MLI-Knot-Mind-Showcase?style=flat&label=stars)
+![README views](https://hits.sh/github.com/proftectiagocosta-hash/MLI-Knot-Mind-Showcase.svg?label=README%20views)
 
 [Português](#português) | [English](#english)
 
@@ -43,6 +46,14 @@ A campanha operacional **O0–O5** do núcleo privado foi concluída. O que pode
 - **O5 — Regressão e continuidade:** a regressão final consolidou **55/55** testes e a campanha O0–O5 foi encerrada por continuidade canônica.
 
 Esses resultados descrevem o escopo validado. Eles não significam produto pronto para produção, deployment universal ou validação de todo provider possível.
+
+### Progresso da campanha operacional documentada
+
+A campanha operacional fechada é composta pelos seis marcos O0, O1, O2, O3, O4 e O5. Todos os seis estão documentados como concluídos no núcleo fonte e refletidos nesta vitrine pública sanitizada.
+
+**Campanha operacional fechada: 6/6 = 100%.**
+
+O denominador é exclusivamente a campanha operacional O0–O5 já encerrada. Este percentual **não** representa conclusão total do produto, conclusão de todas as evoluções públicas do roadmap, prontidão de produção, compatibilidade universal com providers ou encerramento futuro do ecossistema Mind.
 
 ### Fluxo público simplificado
 
@@ -165,6 +176,14 @@ The private core's **O0–O5 operational campaign is complete**. The public-safe
 - **O5 — Regression and continuity:** the final regression consolidated **55/55** tests and the O0–O5 campaign was closed through canonical continuity.
 
 These results describe the validated scope. They do not imply production readiness, universal deployment or validation against every possible provider.
+
+### Documented operational campaign progress
+
+The closed operational campaign consists of six milestones: O0, O1, O2, O3, O4 and O5. All six are documented as complete in the private source core and reflected in this sanitized public showcase.
+
+**Closed operational campaign: 6/6 = 100%.**
+
+The denominator is limited strictly to the already-closed O0–O5 operational campaign. This percentage is **not** total product completion, completion of every public-roadmap evolution, production readiness, universal provider compatibility, or final completion of the future Mind ecosystem.
 
 ### Simplified public flow
 
